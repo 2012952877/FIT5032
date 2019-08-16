@@ -1,0 +1,24 @@
+﻿True
+
+
+IsDirty              : False
+FileCount            : 1
+Name                 : jquery-3.3.1.intellisense.js
+Collection           : System.__ComObject
+Properties           : System.__ComObject
+DTE                  : System.__ComObject
+Kind                 : {6BB5F8EE-4483-11D3-8BCF-00C04F8EC28C}
+ProjectItems         : System.__ComObject
+Object               : System.__ComObject
+ExtenderNames        : {}
+ExtenderCATID        : {610D4615-D0D5-11D2-8599-006097C68E81}
+Saved                : True
+ConfigurationManager : 
+FileCodeModel        : 
+Document             : 
+SubProject           : 
+ContainingProject    : System.__ComObject
+
+
+
+True
