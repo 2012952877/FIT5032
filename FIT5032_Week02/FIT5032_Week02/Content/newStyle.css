@@ -1,0 +1,34 @@
+﻿.previewsecondLevel {
+    color: blue;
+
+}
+
+.preview {
+    background-color: yellow;
+    width: 150px;
+}
+
+.preview2 {
+    background-color: green;
+    width: 250px;
+    box-shadow: 1px 1px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+.preview2secondLevel {
+    font-family: Arial;
+    font-weight: bold;
+    color: blue;
+    padding-top: 15px;
+    margin-bottom: 20px;
+}
+
+p {
+    color: white;
+}
+
+.secondHello {
+    font-weight: bold;
+}
