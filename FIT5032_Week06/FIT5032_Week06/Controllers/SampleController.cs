@@ -27,37 +27,19 @@ namespace FIT5032_Week06.Controllers
             return View();
         }
 
-        //[HttpPost]
-        public ActionResult Create()
-        {
-            if (model is null)
-            {
-                throw new ArgumentNullException(nameof(model));
-            }
-
-            try
-            {
-                String FirstName = model.FirstName;
-                String LastName = model.LastName;
-                ViewBag.FullName = FirstName + " " + LastName;
-
-                return View();
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         // POST: Sample/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormOneViewModel model)
         {
             try
             {
                 // TODO: Add insert logic here
+                String FirstName = model.FirstName;
+                String LastName = model.LastName;
 
-                return RedirectToAction("Index");
+                ViewBag.FullName = FirstName + " " + LastName;
+
+                return View();
             }
             catch
             {
