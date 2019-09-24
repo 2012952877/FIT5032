@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using FIT5032_Week07.Models;
+using Assignment.Models;
 
-namespace FIT5032_Week07
+namespace Assignment
 {
     public partial class Startup
     {
@@ -60,8 +60,8 @@ namespace FIT5032_Week07
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "431361746517-idbc5j5208s7t6n4d2m9ium2okd356hs.apps.googleusercontent.com",
-                ClientSecret = "PxFHyd4GUEy20tusNXkfEWbL"
+                ClientId = "724091163433-tcge569kn9dnmalm0jjr017u42m0lkl5.apps.googleusercontent.com",
+                ClientSecret = "Z7vT6eq5vKRDH61OaaTlsTyg"
             });
         }
     }

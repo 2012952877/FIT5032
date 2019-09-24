@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FIT5032_Week07.Controllers
+namespace Assignment.Controllers
 {
     [RequireHttps]
     public class HomeController : Controller
