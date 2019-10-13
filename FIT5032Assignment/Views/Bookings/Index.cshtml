@@ -1,0 +1,130 @@
+﻿@model IEnumerable<FIT5032Assignment.Models.Booking>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Reservations</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SelectKaraoke")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Karaoke.Venue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Until)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Food_And_Drinks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apply_For_Party)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Leave_Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="scheduledTimes">
+            <td>
+                @Html.DisplayFor(modelItem => item.Karaoke.Venue)
+            </td>
+            <td class="date">
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Until)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food_And_Drinks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apply_For_Party)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Leave_Message)*@
+                @Html.Raw(item.Leave_Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CustomerId)
+                </td>*@
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+<canvas id="line-chart" width="400" height="100"></canvas>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script>
+        //loop date in table
+        //$(".scheduledTimes").each(function () {
+        //    var date = $(".date", this).text().trim();
+        //    let date = new Date();
+        //    if (date.getMonth() == 0) {
+        //        var month1++;
+        //    }
+        //    else if (date.getMonth() == 1) {
+        //        var month2 = month2 + 1;
+        //    }
+        //    else if (date.getMonth() == 2) {
+        //        var month3++;
+        //    }
+        //    else if (date.getMonth() == 3)
+
+        //})
+
+        new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+            data: {
+                labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050],
+                //Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
+                datasets: [{
+                    data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
+                    label: "Scheduled times",
+                    borderColor: "#3e95cd",
+                    fill: false
+                }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'World population per region (in millions)'
+                }
+            }
+        });
+    </script>
+}

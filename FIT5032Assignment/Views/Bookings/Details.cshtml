@@ -1,0 +1,101 @@
+﻿@model FIT5032Assignment.Models.Booking
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Until)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Until)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Food_And_Drinks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Food_And_Drinks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apply_For_Party)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apply_For_Party)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Leave_Message)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Leave_Message)*@
+            @Html.Raw(Model.Leave_Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Karaoke.Venue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Karaoke.Venue)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+}
