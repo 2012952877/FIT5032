@@ -1,0 +1,117 @@
+﻿@model IEnumerable<FIT5032Assignment.Models.Booking>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Reservations</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SelectKaraoke") || 
+    @Html.ActionLink("Make Review", "Index", "Reviews")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Karaoke.Venue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Until)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Food_And_Drinks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apply_For_Party)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Leave_Message)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="scheduledTimes">
+            <td>
+                @Html.DisplayFor(modelItem => item.Karaoke.Venue)
+            </td>
+            <td class="date">
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Until)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Food_And_Drinks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apply_For_Party)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Leave_Message)*@
+                @Html.Raw(item.Leave_Message)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CustomerId)
+                </td>*@
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+<canvas id="line-chart" width="400" height="100"></canvas>
+
+<canvas id="line-chart" width="400" height="100"></canvas>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script>
+        var tabledata = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        $(".scheduledTimes").each(function () {
+            let date = $(".date", this).text().trim();
+            var month = parseInt(date.split('/')[1]) - 1
+            tabledata[month] = tabledata[month] + 1
+        });
+
+        new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    data: tabledata,
+                    label: "Scheduled Times",
+                    borderColor: "#eb8938",
+                    fill: false
+                }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Scheduled times for each month'
+                }
+            }
+        });
+    </script>
+
+
+}

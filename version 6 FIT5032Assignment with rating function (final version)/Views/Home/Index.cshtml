@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="jumbotron">
+        <h1>SING YOUR HEART OUT<br> ❤ AT E-KARAOKE!!! ❤ </h1>
+        <p class="lead">Please use our booking system below to make a reservation. If you would like to make a last-minute booking, we recommend you give us a ring at the branch. Walk-ins are always welcome.<br>* 10% surcharge applies on Dec 24th and Dec 31st.</p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p><a href="/Bookings/SelectKaraoke" class="btn btn-danger btn-lg">Booking Now &raquo;</a></p>
+            <p><a href="https://asp.net" class="btn btn-primary btn-lg">Pricing &raquo;</a></p>
+        }
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <p><a href="/Account/Register" class="btn-primary btn-lg">Register &raquo;</a></p>
+            <p><a href="/Account/Login" class="btn-primary btn-lg">Login &raquo;</a></p>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h2>SONG LIST</h2>
+            <p>Start build your own favourite list!</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>FOOD & DRINKS</h2>
+            <p>Enjoy a complimentary drink and order a dish to amp up the fun!<br>Staring from $15*</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>SOCIAL EVENTS</h2>
+            <p>Have your event with us! Start with booking a private karaoke room.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-3">
+            <h2>FIND US</h2>
+            <p>Here’s how to find us. Give us a call, drop us a mail, or just pop in for a look around.</p>
+            <p><a class="btn btn-default" href="/Locations/Index">Learn more &raquo;</a></p>
+        </div>
+    </div>
