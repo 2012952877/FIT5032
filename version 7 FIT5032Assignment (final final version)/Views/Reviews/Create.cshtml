@@ -1,0 +1,106 @@
+﻿@model FIT5032Assignment.Models.Review
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var selectList = new SelectList(
+        new List<SelectListItem>
+        {
+            new SelectListItem {Text = "1", Value = "1"},
+            new SelectListItem {Text = "2", Value = "2"},
+            new SelectListItem {Text = "3", Value = "3"},
+            new SelectListItem {Text = "4", Value = "4"},
+            new SelectListItem {Text = "5", Value = "5"},
+                                                                                                                                                        }, "Value", "Text");
+}
+
+@*@{
+        var selectList = new SelectList(
+            new List<SelectListItem>
+            {
+                new SelectListItem {Text = "Google", Value = "Google"},
+                new SelectListItem {Text = "Other", Value = "Other"},
+                    }, "Value", "Text");
+    }*@
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Review</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BookingId, "BookingId", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("BookingId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.BookingId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Rate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control" } })*@
+            @*drop down list*@
+            @Html.DropDownListFor(model => model.Rate, selectList, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Rate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<select id="example">
+        <option id="value1" value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>*@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control", @id = "mytextarea" } })
+            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/jquery.barrating.min.js"></script>*@
+
+    <script>
+        tinymce.init({
+            selector: "#mytextarea"
+        });
+    </script>
+
+    @*drop down list*@
+
+    @*<script>
+        $('#example').barrating({
+            theme: 'fontawesome-stars',
+            onSelect: (value, text, event) => {
+                $('.rate').val(value);
+            },
+        })
+    </script>*@
+
+}
